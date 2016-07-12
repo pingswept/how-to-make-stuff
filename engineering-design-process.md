@@ -27,3 +27,5 @@ Here are the steps:
     4. Add more requirements and return to step 2, (build a prototype).
     
 Each iteration through the loop improves the quality of the prototype. After a few iterations, you can start making batches of prototypes ("alpha units" and then "beta units").
+
+If you take the approach of iterative design, tools that allow you to prototype quickly become extremely alluring. This is why people get so excited about lasercutters and 3D printers.
