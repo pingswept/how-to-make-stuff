@@ -47,3 +47,4 @@
         A. Fiberglass
         B. Carbon fiber
         C. Aramid fiber (Kevlar)
+    6. Fabrics
