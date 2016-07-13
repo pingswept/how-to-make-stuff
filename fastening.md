@@ -12,11 +12,11 @@ Slotted
 
 ## Adhesives ##
 
-## Welding ##
+## Metal welding ##
 
     1. MIG welding
     2. TIG welding
-    3. 
+    3. Brazing
 
 ## Ultrasonic welding ##
 
