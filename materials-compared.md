@@ -11,6 +11,8 @@
 
 ## Fatigue ##
 
+![Fatigue limit of steel](HTMS-fatigue-limit-of-steel-2016-07-14.png)
+
 ## Creep ##
 
 ## Moisture resistance ##
