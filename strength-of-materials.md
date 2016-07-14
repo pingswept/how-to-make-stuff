@@ -3,3 +3,7 @@ In 1996, when I was just getting interested in engineering, I was talking to a f
 At the time, I thought my friend was trying to dodge the question. Just tell me which one is stronger! It turns out that there are subtle distinctions in what "strength" means.
 
 Stiffness, hardness, toughness, strength-to-weight
+
+## Stress versus strain ##
+
+![various stress-strain curves](HTMS-stress-strain-2016-07-14.png)
