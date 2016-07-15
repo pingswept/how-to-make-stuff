@@ -1,0 +1,60 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <link href="nv.d3.min.css" rel="stylesheet">
+    <script src="nv.d3.min.js"></script>
+</head>
+<body>
+<div id="test1" class='with-3d-shadow with-transitions'>
+    <svg></svg>
+</div>
+
+<script>
+    var chart;
+    var scatterdata; //Don't need to initialize nested array, d3.nest will create it.
+
+    d3.csv("strength-to-weight-ratio.csv", function (error, csv) {
+        if (error) return console.log("There was an error loading the CSV file: " + error);
+        console.log("There are " + csv.length + " elements in the CSV set.");
+
+        var nestFunction = d3.nest().key(function(d){return d.Materialfamily;});
+            //create the function that will nest data by country name
+
+        scatterdata = nestFunction.entries(
+                        csv.map(function(d){ 
+                            d.x = +d.yield;  
+                            d.y = +d.density;  
+                            return d;  
+                        })
+        );  //pass the formatted data array into the nest function
+
+      console.log("There are " + scatterdata.length + " elements in the data.");
+    });
+
+    nv.addGraph(function() {
+        chart = nv.models.scatterChart()
+            .showDistX(true)
+            .showDistY(true)
+            .useVoronoi(true)
+            .color(d3.scale.category10().range())
+            .duration(300)
+        ;
+        chart.dispatch.on('renderEnd', function(){
+            console.log('render complete');
+        });
+
+        chart.xAxis.tickFormat(d3.format('.02f'));
+        chart.yAxis.tickFormat(d3.format('.02f'));
+
+        d3.select('#test1 svg')
+            .datum(scatterdata) //randomData(4,40))
+            .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        chart.dispatch.on('stateChange', function(e) { ('New State:', JSON.stringify(e)); });
+        return chart;
+    });
+</script>
+</body>
+</html>
