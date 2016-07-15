@@ -1,13 +1,13 @@
 Material family, material, yield strength [ksi], density [kg/m^3], hardness [Brinell], 2016 cost for 36 in^3 [USD]
 metals, 1018 steel, 54, 7850, 125, 33.85
-metals, O1 tool steel, 50, 7850, 104.82
-metals, 4130 chromoly steel, 50, 7850, Rockwell B85, 45.68
-metals, 6061 aluminum, 35, 2800, 80, 
-metals, 2024 aluminum, 47, 2800, 120, 
-metals, 7075 aluminum, 56, 2800, 130, 
+metals, O1 tool steel, 50, 7850, Rockwell C65, 104.82
+metals, 4130 chromoly steel, 50, 7850, Rockwell C64, 45.68
+metals, 6061 aluminum, 35, 2800, 80, 16.42
+metals, 2024 aluminum, 47, 2800, 120, 43.47
+metals, 7075 aluminum, 56, 2800, 130, 82.87
 metals, titanium, , 4500, 
-wood, pine, ,
-wood, mahogany, ,
-wood, balsa, ,
+wood, pine, , , 26 lbs/ft^3
+wood, white ash, , , 45 lbs/ft^3
+wood, balsa, , , , 11 lbs/ft^3
 composites, carbon fiber and epoxy, ,
 composites, aramid fiber and epoxy, ,
