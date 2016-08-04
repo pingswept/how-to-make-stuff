@@ -6,9 +6,9 @@ metals, 6061 aluminum, 35, 2800, 80, 16.42
 metals, 2024 aluminum, 47, 2800, 120, 43.47
 metals, 7075 aluminum, 56, 2800, 130, 82.87
 metals, titanium, 120, 4500, Rockwell C30 , 729.28
-wood, pine, modulus 350 ksi, 416, , 0.18
-wood, white ash, modulus 1740 ksi, 721, , 1.25
-wood, balsa, modulus 538 ksi, 176, , 1.40
+wood, pine, modulus 350 ksi, 420, , 0.18
+wood, white ash, modulus 1740 ksi, 720, , 1.25
+wood, balsa, modulus 538 ksi, 180, , 1.40
 composites, fiberglass and epoxy, 40, 1600, , 30.00
 composites, carbon fiber and epoxy, 175, 1600, , 190.00
 composites, aramid fiber and epoxy, , , ,
