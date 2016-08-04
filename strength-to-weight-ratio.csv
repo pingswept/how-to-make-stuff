@@ -9,6 +9,6 @@ metals, titanium, 120, 4500, Rockwell C30 , 729.28
 wood, pine, modulus 350 ksi, 416, , 0.18
 wood, white ash, modulus 1740 ksi, 721, , 1.25
 wood, balsa, modulus 538 ksi, 176, , 1.40
-composites, fiberglass and epoxy, 40, 0.06 lbs/in^3, , 30.00
-composites, carbon fiber and epoxy, 175, 0.06 lbs/in^3, , 190.00
+composites, fiberglass and epoxy, 40, 1600, , 30.00
+composites, carbon fiber and epoxy, 175, 1600, , 190.00
 composites, aramid fiber and epoxy, , , ,
