@@ -90,4 +90,25 @@ It might seem like a CAD model could define a part completely, but it omits data
 ## Class #3 ##
 
 * Last time: Drawing, CAD modeling, tolerances, and iterative design.
-* This time: requirements vs. specifications, safety.
+* This time: Requirements vs. specifications, safety.
+
+### Requirements vs. specifications ###
+
+Specifications describe the characteristics of a something, usually with numbers.
+
+*Tesla Roadster specifications*
+
+* Length: 93"
+* Width: 74"
+* Weight: 2877 lbs
+* Battery capacity: 53 kWh
+* Battery energy density: 117 Wh/kg
+* Battery volumetric energy density: 370 Wh/L
+* 0-60 mph time: 3.9 s for standard model, 3.7 s for Sport model
+* Range on EPA combined cycle test: 244 miles
+
+Requirements describe targets that must be met or exceeded. Requirements are usually collected in a "requirements document."
+
+For example, for the original Tesla Roadster, the requirement was that the car go 0-60 in under 4 seconds, because this what its high-performance competitors could do. When trying to hit this requirement, Tesla found that the best 2-speed transmission they could build couldn't survive the torque required to get under 4 seconds. They shipped the first 100 or so cars with a single-speed transmission that could handle the torque and offered to replace the transmissions once a two-speed transmission was developed.
+
+Sometimes, requirements can lead you toward obsession with quantification. "Must be painted bright pink" is a legitimate requirement.
