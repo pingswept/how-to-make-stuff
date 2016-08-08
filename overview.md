@@ -112,3 +112,11 @@ Requirements describe targets that must be met or exceeded. Requirements are usu
 For example, for the original Tesla Roadster, the requirement was that the car go 0-60 in under 4 seconds, because this what its high-performance competitors could do. When trying to hit this requirement, Tesla found that the best 2-speed transmission they could build couldn't survive the torque required to get under 4 seconds. They shipped the first 100 or so cars with a single-speed transmission that could handle the torque and offered to replace the transmissions once a two-speed transmission was developed.
 
 Sometimes, requirements can lead you toward obsession with quantification. "Must be painted bright pink" is a legitimate requirement.
+
+### Safety ###
+
+As you learn to use different tools and start building bigger stuff, you should start adopting a mature attitude about safety. When you're working in a shop, if you see someone doing something that looks unsafe to you, you will probably feel uncomfortable asking them to stop. You should do it anyway.
+
+Here's what that sounds like: "Hey, that seems unsafe to me. Are you sure that's the best way to do that?"
+
+You should want other people to help keep you safe. If someone questions whether what you are doing is safe, you should realize that they have already overcome a threshold of "this looks so dangerous that I should bother this person, even though it makes me uncomfortable to do so."
