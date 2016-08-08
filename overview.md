@@ -129,3 +129,10 @@ Make a coat hook
 
 * Last time: Requirements vs. specifications, safety.
 * This time: Estimation and bounding
+
+### Estimation and bounding ###
+
+Should 24 Hour Fitness try to reduce costs by capturing energy from exercise equipment?
+
+A Tour de France champion cyclist can average around 200 W for 5 hours. It is very unlikely that normal people would actually average above 100 W. That's around 2400 Wh, or 2.4 kWh per day. Whatever generator you hook to the exercise equipment willbe less than 100% efficient; you would do well to capture 2 kWh out of the 2.4 kWh available. Residential electricity costs around $0.10 per kWh, but the power company will only pay you maybe half of that for electricity fed back into the grid. so your absolute max yield is less than a dime per day per bike.
+
