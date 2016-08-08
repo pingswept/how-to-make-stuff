@@ -28,12 +28,42 @@ On average, you will learn faster if you take big, risky steps, fail, and then r
 ## Class #2 ##
 
 * Last time: Popsicle sticks and how we talk about building stuff.
-* This time: Drawing, CAD modeling, requirements and specifications.
+* This time: Drawing, CAD modeling, tolerances, and iterative design.
 
 ### Technical drawing on paper ###
 
 * You might think that, "I'm just not good at drawing." Note that almost everyone thinks that, even the people who are really skilled. It's scary to make a drawing and then show it to lots of people.
 * Learning technical drawing makes you a faster, clearer, more efficient communicator. 
+
+### The naive approach ###
+
+In software, we call this "the waterfall method."
+
+Here are the steps:
+
+    1. Figure out what the thing needs to do, AKA "generating requirements"
+    2. Design something with specifications that meet those requirements.
+    3. Manufacture the thing.
+    4. Test the thing.
+    5. Manufacture a large quantity of the thing.
+    6. Ship the thing.
+
+Generally, this approach seems like it should work. Surprisingly, it usually does not.
+
+### A more savvy approach ###
+
+You could call this iterative design.
+
+Here are the steps:
+
+    1. Start with at least one basic requirement.
+    2. Build a prototype quickly.
+    3. Show the prototype to users.
+    4. Add more requirements and return to step 2, (build a prototype).
+    
+Each iteration through the loop improves the quality of the prototype. After a few iterations, you can start making batches of prototypes ("alpha units" and then "beta units"). As you move from rough prototypes to detailed designs, the rate of iteration decreases.
+
+If you take the approach of iterative design, tools that allow you to prototype quickly become extremely alluring. This is why people get so excited about lasercutters and 3D printers.
 
 ### 3D CAD with Onshape ###
 
@@ -51,3 +81,8 @@ It might seem like a CAD model could define a part completely, but it omits data
 * Machine tools so expensive we aren't allowed to touch them: 1 mil (0.001")
 * Wire EDM: 0.1 mil (0.0001", 100 microinches)
 * Polishing machine used to make gyroscope rotors for Gravity Probe B: 0.0003 mil (0.0000003", 0.3 microinches)
+
+## Class #3 ##
+
+* Last time: Drawing, CAD modeling, tolerances, and iterative design.
+* This time: requirements vs. specifications, safety.
