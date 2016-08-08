@@ -14,5 +14,9 @@ Build a track for a golf ball out of popsicle sticks.
 
 ### Being open to critique ###
 
-* Criticize the design, not the person. When you feel criticized, check whether the target might be the design rather than you.
-* Be specific in your criticism. Try to anticipate failures and describe failure modes.
+* *Criticize the design, not the person.* When you feel criticized, check whether the target might be the design rather than you.
+  * :heart: "I'm worried this part won't be strong enough." :heart:
+  * :warning: "You're out of your mind! This will never work!" :warning:
+* *Be specific in your criticism.* Try to anticipate failures and describe failure modes.
+  * :heart: "I'm worried the wood will slide under the tape, and then the upper deck will collapse." :heart:
+  * :warning: "This design is bad. So bad. It just is." :warning:
