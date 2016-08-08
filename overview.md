@@ -120,3 +120,12 @@ As you learn to use different tools and start building bigger stuff, you should 
 Here's what that sounds like: "Hey, that seems unsafe to me. Are you sure that's the best way to do that?"
 
 You should want other people to help keep you safe. If someone questions whether what you are doing is safe, you should realize that they have already overcome a threshold of "this looks so dangerous that I should bother this person, even though it makes me uncomfortable to do so."
+
+### Bray shop training ###
+
+Make a coat hook
+
+## Class #4 ##
+
+* Last time: Requirements vs. specifications, safety.
+* This time: Estimation and bounding
