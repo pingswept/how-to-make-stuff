@@ -72,6 +72,11 @@ If you take the approach of iterative design, tools that allow you to prototype 
 * Parts, part studios, assemblies, drawings
 * Underdefined, overdefined, reference dimensions
 
+There are a few different approaches you can take to CAD modeling.
+
+* Example: modeling a sledgehammer as a filleted box on a cylindrical handle or a drafted extrusion on a swept handle
+* Example: tracing a photo of a finial to create a profile for a swept solid
+
 It might seem like a CAD model could define a part completely, but it omits data about tolerances. In real life, parts you make aren't perfectly formed, and it costs more money to make parts more perfect.
 
 ### Some mechanical tolerances for parts the size of your hand ###
