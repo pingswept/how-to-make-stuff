@@ -27,8 +27,8 @@ On average, you will learn faster if you take big, risky steps, fail, and then r
 
 ## Class #2 ##
 
-Last time: Popsicle sticks and how we talk about building stuff.
-This time: Drawing, CAD modeling, requirements and specifications.
+* Last time: Popsicle sticks and how we talk about building stuff.
+* This time: Drawing, CAD modeling, requirements and specifications.
 
 ### Technical drawing on paper ###
 
