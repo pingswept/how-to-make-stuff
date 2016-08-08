@@ -6,8 +6,11 @@ Week|Tuesday|Thursday
 4|Microcontrollers|Soldering and oscilloscopes
 5|Version control|PCB design
 6|More PCB design|Driving actuators, dealing with high current
-7|Materials|Molding and casting
-8|(no class?)|State machines
-9|Fastening|(Thanksgiving)
-10|Licensing, intellectual property| Documentation
-11|Engineering ethics|Embedded webservers
+7|Sensors|Data filtering
+8|Materials|Molding and casting
+9|Project management|?
+10|(no class?)|?
+11|?|State machines
+12|Fastening|(Thanksgiving)
+13|Licensing, intellectual property| Documentation
+14|Engineering ethics|Embedded webservers
