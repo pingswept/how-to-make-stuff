@@ -8,9 +8,9 @@ Week|Tuesday|Thursday
 6|More PCB design|Driving actuators, dealing with high current
 7|Sensors|Data filtering
 8|Materials|Molding and casting
-9|Project management|?
-10|(no class?)|?
-11|?|State machines
+9|Project management|Designing for 3D printing
+10|(no class?)|State machines
+11|TCP/IP|Web frameworks and cloud servers
 12|Fastening|(Thanksgiving)
 13|Licensing, intellectual property| Documentation
 14|Engineering ethics|Embedded webservers
