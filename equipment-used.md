@@ -1,4 +1,4 @@
-* Raspberry Pi 3 Model B
+* Raspberry Pi 3 Model B ($35 or so)
     * https://www.sparkfun.com/products/13825
     * OR
     * https://www.adafruit.com/products/3055
@@ -8,9 +8,11 @@
     * OR
     * https://www.adafruit.com/products/1995
 
-* Some way to talk to the Raspberry Pi while it's booting:
-    * Sparkfun Pi Wedge plus FTDI adapter plus mini-USB cable
-        * https://www.sparkfun.com/products/13717 and https://www.sparkfun.com/products/9873 and https://www.sparkfun.com/products/11301
+* A console cable to talk to the Raspberry Pi while it's booting:
+    * https://www.sparkfun.com/products/12977
     * OR
-    * Adafruit console cable
-        * https://www.adafruit.com/product/954
+    * https://www.adafruit.com/product/954
+
+* (OPTIONAL) A breakout board ($7-10)
+    * https://www.sparkfun.com/products/13717
+    * https://www.adafruit.com/products/2029
