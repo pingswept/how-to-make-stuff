@@ -272,3 +272,11 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                             div.table-wrapper, table, table.booktabs { width: 85%; }
                             div.table-wrapper { border-right: 1px solid #efefef; }
                             img { width: 100%; } }
+
+@media print {
+    html { font-size: 12px;}
+    p, footer, table { width: 87.5%; }
+    ol, ul { width: 80%; }
+    article { padding: 0rem; }
+    .page-break { display: block; page-break-before: always; }
+}
