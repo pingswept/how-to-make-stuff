@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Mini-golf scoreboard</title>
+    <!-- Based on https://github.com/Reflejo/jquery-countdown -->
+    <script src="js/jquery.min.1.7.2.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <link href="css/jquery.countdown.css" rel="stylesheet" type="text/css" />
+    <script>
+      $(function(){
+        $(".digits").countdown({
+          image: "img/jquery.countdown/digits.png",
+          format: "dd:hh:mm:ss",
+          endTime: new Date(2013, 12, 2)
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="cell">
+        <div id="holder">
+          <div class="digits"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
