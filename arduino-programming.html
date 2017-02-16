@@ -34,7 +34,43 @@
 <h2>Hardware check</h2>
 <p>The next step is to plug in your Arduino with the USB cable. When you plug it in, you should see a green light on the board light up, showing that the Arduino is getting electricity. Depending on how your Arduino was manufactured or last used, some of the yellow lights on the board might also light up. That's okay.</p>
 
-<p>Once the board powers up, it's time to load new code on it. In the Arduino program, select <code class="code">File > Examples > 01.Basics > Blink</code>.</p>
+<p>Once the board powers up, it's time to load new code on it. In the Arduino program, select <code class="code">File > Examples > 01.Basics > Blink</code>. This will open a file containing a short program that blinks the yellow LED labeled "L" on the Arduino in a 1 second on, 1 second off pattern forever (or until you load a new program).</p>
+<p>To compile the program and load it onto the Arduino, click the upload button, which is circled in the screenshot below. (If you hover over a button with the mouse pointer, the function of the button appears in the top bar.)</p>
+<img src="img/arduino-upload-button.png">
+<p>When you click upload, you see some messages at the bottom of the Arduino window. If everything works properly, you should see the following messages in order:</p>
+<ul>
+    <li>"Compiling sketch..."</li>
+    <li>"Uploading..."</li>
+    <li>"Done uploading."</li>
+</ul>
+<p>As the code is uploaded, you'll see the yellow lights on the board flash rapidly for a second or two. Each flash of the light marked "TX" (which means "transmit", for no compelling reason) is a 1 getting sent to the board; the gaps between flashes are 0's. The flashes on the "RX" pin ("receive") are confirmation packets sent back to the computer.</p>
+<p>After the code is loaded, here's what you should see (an Arduino with a flashing yellow light).</p>
+<img src="img/arduino-uno-blink.gif">
+<p>If you've made it this far, your hardware and software are working properly. Congratulations! Go get a drink of cool, delicious water!</p>
+</section>
+
+<section>
+<h2>When stuff goes wrong</h2>
+<p>The most common problem with Arduinos is difficulty communicating between the computer and the Arduino. You might see messages in the bottom window like this:</p>
+<pre class="code">
+avrdude: stk500_recv(): programmer is not responding
+avrdude: stk500_getsync() attempt 1 of 10: not in sync: resp=0x00
+avrdude: stk500_recv(): programmer is not responding
+avrdude: stk500_getsync() attempt 10 of 10: not in sync: resp=0x00
+Problem uploading to board.  See http://www.arduino.cc/en/Guide/Troubleshooting#upload for suggestions.
+</pre>
+<p>In this case, you should check two settings:</p>
+<ul>
+    <li><code class="code">Tools > Board</code></li>
+    <li><code class="code">Tools > Port</code></li>
+</ul>
+<p>You can also try unplugging the Arduino and plugging it in again and restarting the Arduino program. As a last resort, you can <a href="http://www.arduino.cc/en/Guide/Troubleshooting#upload">"see http://www.arduino.cc/en/Guide/Troubleshooting#upload for suggestions"</a></p>
+</section>
+
+<section>
+<h2>Conceptual underpinnings</h2>
+<p>When the Arduino Uno gets electricity, it starts running whatever code is at location 0 of its memory. This is typically an instruction called a "reset vector" that points to the start of a chunk of code called a "bootloader." The bootloader checks to see if a new program is available via the USB port. If it is, it receives the code, writes it into memory, and starts running it. If no code is available, it just runs whatever program it had been given the last time it was programmed. This is how every Arduino works: power up, look for new code; if none, run old code until power cycle.</p>
+</section>
 
 <section>
 <h2>Some useful programming techniques</h2>
@@ -95,7 +131,7 @@ if(expression) {
 <p>Example:</p>
 
 <pre class="code">
-if(aileronsBroken>UPPER_LIMIT) {
+if(aileronsBroken == BOTH_OF_THEM) {
     DiveBombNavyShip();
 } else {
     FlyToAntarctica();
@@ -156,7 +192,7 @@ while(CherubsSwollen()==FALSE) {
 
 <p>Pretty often, you want to test your program in different configurations, or test different parts separately. An easy way to do that is with #ifdef and #endif. If the word after #ifdef appears in the list of #defines in the file (even if the word isn't defined as any particular number), the compiler will include the code between #ifdef and #endif. Otherwise, the compiler will ignore that section of code.</p>
 
-<h3>The Word static</h3>
+<h3>The word "static"</h3>
 <p>In C++, the word static can be used in at least two different ways. The first way is with variables inside functions. If you add the word static when you declare a variable, that variable will retain its value from the end of one function call to the beginning of the next. If you don't do that, the variable will disappear as soon as the function ends. (In reality, the memory allocated to the variable will be returned to the pool of available memory. The data in the variable might stick around for a little while if you're lucky, but sooner or later, it will be overwritten.)</p>
 
 <p>The second way you can use static is with functions. A static function is one that cannot be called anywhere outside of its own file. In general, you should default to making your functions static, so you don't accidentally call them somewhere else. (Not declaring a function to be static is like leaving your bike unlocked. Probably, nothing will go wrong. But then, after three weeks of everything going great, you get out of class, and your bike is gone. The difference here is that you're the one stealing the bike, but you won't know it.)</p>
@@ -167,6 +203,7 @@ while(CherubsSwollen()==FALSE) {
     <li>static function == private function</li>
     <li>static variable == persistent variable</li>
 </ul>
+</section>
 
 </article>
 </body>
