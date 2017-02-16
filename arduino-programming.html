@@ -4,135 +4,66 @@
     <link rel="stylesheet" href="css/tufte.css"/>
 </head>
 <body>
-<h1>Programming Embedded Systems in C++</h1>
+<article>
+<h1>Learning to Program Microcontrollers with Arduino</h1>
 
-A Typical C++ File
+<section>
+<h2>Stuff You Need</h2>
+<ul>
+    <li>A computer, plus the admin password to install software</li>
+    <li>An Arduino Uno R3</li>
+    <li>A USB cable with the right ends to connect the Arduino to the computer</li>
+</ul>
+<p>If you need to buy an Arduino or USB cable, I'd recommend Adafruit in New York as the best choice: <a href="https://www.adafruit.com/products/50">Arduino Uno R3</a> and <a href="https://www.adafruit.com/products/62">USB cable</a>.</p>
+</section>
 
-<label for="mn-demo" class="margin-toggle">&#8853;</label>
-<input type="checkbox" id="mn-demo" class="margin-toggle"/>
-<span class="marginnote">
-  This is a margin note. Notice there isn’t a number preceding the note.
-</span>
-<pre class="code">
-/***************************************/
-/* barrel_of_monkeys.c                 */
-/* sample C file for How To Make Stuff */
-/* version 0.1, 11/28/01               */
-/* Larry Gapherbleschnortz             */
-/***************************************/
+<section>
+<h2>Software check</h2>
+<p>Before you can actually make an Arduino do anything, you have to install the Arduino program. It's actually three programs in one:</p>
+<ul>
+    <li>A text editor, for typing code</li>
+    <li>A compiler, which translates your code into 1's and 0's for the Arduino</li>
+    <li>A USB loader, which loads the 1's and 0's onto the Arduino through the USB cable</li>
+</ul>
+<p>To install the Arduino software, <a href="https://www.arduino.cc/en/Main/Software">download the installer</a> from the Arduino website. (There is also a web-based version, but it doesn't work reliably yet, as of February 2017.)</p>
+<p>You're on your own for the actual installation, but it consists of pressing "OK" and "Next" and things like that a few times. Search the internet for advice if you get stuck. Your goal is to see something like the image below on your screen, except not just a screenshot in your browser window like this one.</p>
+<img src="img/arduino-program-screenshot.png">
+</section>
 
-#include <math.h>
-#include <dbprintf.h>
-#include "barrel.h"
-#include "monkeys.h"
-#include "epinephrine.h"
-#include "timing.h"
+<section>
+<h2>Hardware check</h2>
+<p>The next step is to plug in your Arduino with the USB cable. When you plug it in, you should see a green light on the board light up, showing that the Arduino is getting electricity. Depending on how your Arduino was manufactured or last used, some of the yellow lights on the board might also light up. That's okay.</p>
 
-#define DESIRED_BARRELS       75
-#define BARREL_SIZE           12
-#define MONKEYS_PER_BARREL    (3*BARREL_SIZE)
-//#define DEBUG_EXCITE_MONKEYS
+<p>Once the board powers up, it's time to load new code on it. In the Arduino program, select <code class="code">File > Examples > 01.Basics > Blink</code>.</p>
 
-void ExciteMonkeys(char barrelsLeft, int totalJuice);
-int CalculateJuiceNeeded(int numBarrels);
-void ReleaseMonkeysIntoSPDL(void);
-
-main() {
-    char barrelsLeft;
-    int totalJuice;
-
-    InitializeMonkeyMachine(); // from monkeys.c
-    barrelsLeft=FillBarrels(DESIRED_BARRELS);
-    totalJuice=CalculateJuiceNeeded(barrelsLeft);
-
-    while(barrelsLeft>0){	
-        ExciteMonkeys(barrelsLeft, totalJuice);
-        if(MonkeysFrenzied()==TRUE){
-            ReleaseMonkeysIntoSPDL();
-        }
-        barrelsLeft--;
-    }
-}
-</pre>
-
-\put(0,-5){\framebox(15,6){comment describing the file}}
-\put(0,-13){\framebox(15,7){\parbox{4.5cm}{files with other functions used in the program}}}
-\put(0,-18){\framebox(15,4){constants}}
-\put(0,-22){\framebox(15,3){function prototypes}}
-\put(0,-39){\framebox(15,16){main program}}
-\put(0,-45){\framebox(15,5){\parbox{4.5cm} {other functions, shown on the next page}}}
-
-<pre class="code">
-void ExciteMonkeys(char barrelsLeft, int totalJuice) {
-    char i;
-
-    for(i=0; i&lt;MONKEYS_PER_BARREL; i++) {
-        InjectNextMonkey(barrelsLeft, totalJuice, i);
-
-#ifdef DEBUG_EXCITE_MONKEYS
-	DB_printf("Barrels left: %c, juice left: %d,
-            monkey num: %c\n", barrelsLeft, totalJuice, i);
-#endif
-
-    }
-}
-
-int CalculateJuiceNeeded(int numBarrels) {
-    int ccJuice;
-
-    /* using ANSI math.c library's Bessel function */
-    /* to calculate inverse Hilbert transform      */
-    ccJuice=BesselFn(numBarrels*MONKEYS_PER_BARREL);
-    return ccJuice;
-}
-
-void ReleaseMonkeysIntoSPDL(void) {
-    _H12PORTT|=BIT3HIGH; // triggers solenoids
-    Delay(50);
-    _H12PORTT&=BIT3LOW;  // turns off solenoids
-}
-</pre>
-
-<h2>Introduction</h2>
-Let it first be stated that this packet is intended to give people in 218A a rough idea of how to program in C. Most of the details are omitted, and several bald-faced lies are included to make things seem simple. There are probably some errors, too-- sorry about those. To start, look at the diagram on the first page, which is a schematic of a typical C program. We'll go through each part, but in reverse order (starting with "main" and then working up).
-
-<h3>main()</h3>
-	The main() function contains a list of the procedures that will be executed, in order, by the microprocessor. For embedded systems, it usually consists of a few variables, a few initialization functions, followed by a loop that repeats forever. Inside the loop, you usually have a few functions that call enormous subroutines.
-
-<h3>Function Prototypes</h3>
-	The exact purpose and minimal form of function prototypes is a little bit complicated, but you can simplify it to the following two sentences: (1) Every function defined in a file, except main(), needs a prototype. (2) Make each function's prototype equal to the first line of the function definition followed by a semicolon instead of a curly brace.
-
-Where exactly you put the prototypes is an interesting puzzle that we'll save for later. The short answer, which will make no sense at this point, is that prototypes of private functions go just above main(), and prototypes for public functions go in the functions' header (.h) files.
-
-If you want to know what a function is, skip ahead to the "functions" section. It's better just to have read this paragraph, and saved it in the category of "little rules that I need to remember to make my program work."
-
+<section>
+<h2>Some useful programming techniques</h2>
 <h3>#defines</h3>
-First off, anything that starts with a # is called a "preprocessor directive." When you translate your C code into a binary executable file, the first step is a sweep by the preprocessor. It reads the #defines and replaces anything you have defined with your definitions. For example, if you have written <pre class="code">#define TOO_MUCH_CHEESE 138</pre>, the preprocessor will replace all subsequent occurrences of the phrase <pre class="code">TOO\_MUCH\_CHEESE</pre> with the number <pre class="code">138</pre>.
+<p>First off, anything that starts with a # is called a "preprocessor directive." When you translate your C code into a binary executable file, the first step is a sweep by the preprocessor. It reads the #defines and replaces anything you have defined with your definitions. For example, if you have written <code class="code">#define TOO_MUCH_CHEESE 138</code>, the preprocessor will replace all subsequent occurrences of the phrase <code class="code">TOO_MUCH_CHEESE</code> with the number <code class="code">138</code>.</p>
 
-This probably seems stupid-- why wouldn't you just write 138 in the first place? Suppose you had written 138 in 22 different places in a long file. Then, you realized that 138 wasn't really all <i>that</i> much cheese, so you decide to bump 138 up to 243. If you were smart enough to use a #define, you only have to change it in one place.
+<p>This probably seems stupid-- why wouldn't you just write 138 in the first place? Suppose you had written 138 in 22 different places in a long file. Then, you realized that 138 wasn't really all <i>that</i> much cheese, so you decide to bump 138 up to 243. If you were smart enough to use a #define, you only have to change it in one place.</p>
 
-But the fun doesn't stop there! You can also use them to make your code more understandable, which will be highly desirable next Wednesday night, when I'm trying to help you debug your Morse code receiver. For example, if you write <pre class="code">if(signal>128)</pre>, I have no idea what you're doing. If you write <pre class="code">if(signal>HIGH_GOING_THRESHOLD)</pre>, I'll have a good guess of what's happening.
+<p>But the fun doesn't stop there! You can also use them to make your code more understandable, which is highly desirable when I'm trying to help you debug your project. For example, if you write <code class="code">if(signal>128)</code>, I have no idea what you're doing. If you write <code class="code">if(signal>SENSOR_THRESHOLD)</code>, I'll have a good guess of what's happening.</p>
 
-A good rule of thumb is that if you find any numbers other than 1's and 0's below <pre class="code">main()</pre> you're probably making a mistake.
+<p>A good rule of thumb is that if you find any numbers other than 1's and 0's below <code class="code">main()</code> you're probably making a mistake.</p>
 
-An interesting thing to think about is what happens if you make one <pre class="code">#define</pre> depend on another-- does the order matter? (No, but it seems like it does at first. That's why it's "interesting.")
+<p>An interesting thing to think about is what happens if you make one <code class="code">#define</code> depend on another-- does the order matter? (No, but it seems like it does at first. That's why it's "interesting.")</p>
 
 <h3>#includes</h3>
-Writing C code is fun, but you probably don't want to write everything yourself. If you want to use some functions that someone else has written, you need to tell your program where to find them. 
+<p>Writing C++ code is fun, but you probably don't want to write everything yourself. If you want to use some functions that someone else has written, you need to tell your program where to find them.</p>
 
-There are two formats of #includes:
+<p>There are two formats of #includes:</p>
 <pre class="code">
 #include &lt;somefunctions.h&gt;
 #include "somefunctions.h"
 </pre>
-You use the for &lt;somefunctions.h&gt; for files of functions that are pre-installed with the compiler. The "somefunctions.h" format is used for any little collections of functions you write and keep in the same directory as your main program. (Actually, these settings can be different on different compilers, and, to be honest, I'm not really even sure that this is the way our compiler is set up.)
+<p>You use the for &lt;somefunctions.h&gt; for files of functions that are pre-installed with the compiler. The "somefunctions.h" format is used for any little collections of functions you write and keep in the same directory as your main program. (Actually, these settings can be different on different compilers, and, to be honest, I'm not really even sure that this is the way the Arduino compiler is set up, but that's why there are two formats.)</p>
 
 <h3>The Comment at the Top</h3>
-Comments are text fragments injected for the sake of humans; the preprocessor strips them out as soon as you give it the file for compilation. For C, the rule is that comments are to be stuck between the symbols /* and */. Since C++ has been developed as an improved version of C, most preprocessors now allow "C++ style comments" which start with // and continue to the end of a line.
+<p>Comments are text fragments injected for the sake of humans; the preprocessor strips them out as soon as you give it the file for compilation. For C, the rule is that comments are to be stuck between the symbols /* and */. Since C++ has been developed as an improved version of C, most preprocessors now allow "C++ style comments" which start with // and continue to the end of a line.</p>
 
 <h3>Functions</h3>
-A function is a section of code that takes in some data and spits out some other data. For some functions, one or both chunks of data might not exist. (Why would you want a function that neither takes in nor emits data? Maybe it turns on a solenoid, or launches a rocket.) Here is the structure:
-
+<p>A function is a section of code that takes in some data and spits out some other data. For some functions, one or both chunks of data might not exist. (Why would you want a function that neither takes in nor emits data? Maybe it turns on a solenoid, or launches a rocket.) Here is the structure:</p>
 
 <pre class="code">
 output-data-type NameOfFunction(input-data-type1 variable1, input-data-type2 variable2 . . . ) {
@@ -145,14 +76,14 @@ output-data-type NameOfFunction(input-data-type1 variable1, input-data-type2 var
 }
 </pre>
 
-By far, the coolest thing about functions is that you can use them to break down complex tasks into simpler ones. Suppose you're building a medical imaging device that uses the Bessel function to compute Hankel transforms. You write a little function that calculates the value of the Bessel function for different numbers. Then you write a little program that tests your function (to be cool, call this little test program a "test harness"). Once you get that function working, you put in a file labeled "bessel.c", include a header called "bessel.h," and you never think about it again. This is {\it significantly} different from, say, building a house. You cannot, for example, build a house in the following order: (1) putting up the wallpaper, (2) installing the wiring, and then (3) building the floor, walls, and roof.
+<p>By far, the coolest thing about functions is that you can use them to break down complex tasks into simpler ones. Suppose you're building a medical imaging device that uses the Bessel function to compute Hankel transforms. You write a little function that calculates the value of the Bessel function for different numbers. Then you write a little program that tests your function (to be cool, call this little test program a "test harness"). Once you get that function working, you put in a file labeled "bessel.c", include a header called "bessel.h," and you never think about it again. This is <i>significantly</i> different from, say, building a house. You cannot, for example, build a house in the following order: (1) putting up the wallpaper, (2) installing the wiring, and then (3) building the floor, walls, and roof.</p>
 
-The second coolest thing about functions is that the variables used inside them disappear when the function is finished.
+<p>The second coolest thing about functions is that the variables used inside them disappear when the function is finished.</p>
 
 <h2>Useful Structures</h2>
 <h3>if</h3>
 
-Structure:
+<p>Structure:</p>
 <pre class="code">
 if(expression) {
     statement1;
@@ -161,13 +92,9 @@ if(expression) {
 }
 </pre>
 
-Notes:
-(1) you can leave off the "else" part if you want.
-(2) A very common error is to use = (which assigns a value to a variable) instead of == (which tests one expression against another)\\
+<p>Example:</p>
 
-Example:
-
-<pre class="code">\
+<pre class="code">
 if(aileronsBroken>UPPER_LIMIT) {
     DiveBombNavyShip();
 } else {
@@ -175,58 +102,72 @@ if(aileronsBroken>UPPER_LIMIT) {
 }
 </pre>
 
+<p>Notes:</p>
+<ol>
+    <li>you can leave off the "else" part if you want.</li>
+    <li>A very common error is to use = (which assigns a value to a variable) instead of == (which tests one expression against another)</li>
+</ol>
+
 <h3>for</h3>
 
-Structure:
-<pre class="code">\
+<p>Structure:</p>
+<pre class="code">
 for(start; test for end; increment) {
     statement;
 }
 </pre>
 
-Note: don't forget to declare your counter variable before you use it.
+<p>Example:</p>
 
-Example:
-
-<pre class="code">\
+<pre class="code">
 for(i=1; i<=TOTAL_PUMPKINS; i++) {
     DetonateThePumpkin();
 }
 </pre>
 
+<p>Note: don't forget to declare your counter variable before you use it.</p>
+
 <h3>while</h3>
 
-Structure:
-<pre class="code">\
+<p>Structure:</p>
+<pre class="code">
 while(test) {
     statement;
 }
 </pre>
 
-Note: while(1) is a good way to make an infinite loop.
+<p>Example:</p>
 
-Example:
-
-<pre class="code">\
+<pre class="code">
 while(CherubsSwollen()==FALSE) {
     FeedTheCherubs();
 }
 </pre>
 
+<p>Note: <code class="code">while(1)</code> is a good way to make an infinite loop.</p>
+
 <h2>Other Things That Didn't Really Fit Anywhere Else</h2>
 
 <h3>Declaring Variables</h3>
-	At the start of any function, you should declare what variables you will use, other than the ones that are given as inputs to the function. For 218, there are two variable types you will need: (1) chars and (2) ints. "Char" is short for "character," and it is allocated one byte in memory. You can fit numbers from 0 to 255 in a char (because one byte is 8 bits, and 2^8-1=255). "Int" is short for "integer," and it gets two bytes. With an int, you can get from 0 up to 65,535.
+
+<p>At the start of any function, you should declare what variables you will use, other than the ones that are given as inputs to the function. Here are two variable types you will need: (1) chars and (2) ints. "Char" is short for "character," and it is allocated one byte in memory. You can fit numbers from 0 to 255 in a char (because one byte is 8 bits, and 2^8-1=255). "Int" is short for "integer," and it gets two bytes. With an int, you can get from 0 up to 65,535.</p>
 
 <h3>#ifdef and #endif</h3>
-	Pretty often, you want to test your program in different configurations, or test different parts separately. An easy way to do that is with #ifdef and #endif. If the word after #ifdef appears in the list of #defines in the file (even if the word isn't defined as any particular number), the compiler will include the code between #ifdef and #endif. Otherwise, the compiler will ignore that section of code.
+
+<p>Pretty often, you want to test your program in different configurations, or test different parts separately. An easy way to do that is with #ifdef and #endif. If the word after #ifdef appears in the list of #defines in the file (even if the word isn't defined as any particular number), the compiler will include the code between #ifdef and #endif. Otherwise, the compiler will ignore that section of code.</p>
 
 <h3>The Word static</h3>
-	In C, the word static can be used in two different ways. The first way is with variables inside functions. If you add the word static when you declare a variable, that variable will retain its value from the end of one function call to the beginning of the next. If you don't do that, the variable will disappear as soon as the function ends. (In reality, the memory allocated to the variable will be returned to the pool of available memory. The data in the variable might stick around for a little while if you're lucky, but sooner or later, it will be overwritten.)
+<p>In C++, the word static can be used in at least two different ways. The first way is with variables inside functions. If you add the word static when you declare a variable, that variable will retain its value from the end of one function call to the beginning of the next. If you don't do that, the variable will disappear as soon as the function ends. (In reality, the memory allocated to the variable will be returned to the pool of available memory. The data in the variable might stick around for a little while if you're lucky, but sooner or later, it will be overwritten.)</p>
 
-	The second way you can use static is with functions. A static function is one that cannot be called anywhere outside of its own file. In general, you should default to making your functions static, so you don't accidentally call them somewhere else. (Not declaring a function to be static is like leaving your bike unlocked. Probably, nothing will go wrong. But then, after three weeks of everything going great, you get out of class, and your bike is gone. The difference here is that you're the one stealing the bike, but you won't know it.)
-Summary:
-static function == private function
-static variable == persistent variable
+<p>The second way you can use static is with functions. A static function is one that cannot be called anywhere outside of its own file. In general, you should default to making your functions static, so you don't accidentally call them somewhere else. (Not declaring a function to be static is like leaving your bike unlocked. Probably, nothing will go wrong. But then, after three weeks of everything going great, you get out of class, and your bike is gone. The difference here is that you're the one stealing the bike, but you won't know it.)</p>
+
+<p>Summary:</p>
+
+<ul>
+    <li>static function == private function</li>
+    <li>static variable == persistent variable</li>
+</ul>
+
+</article>
 </body>
 </html>
