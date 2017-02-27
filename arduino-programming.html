@@ -70,6 +70,33 @@ Problem uploading to board.  See http://www.arduino.cc/en/Guide/Troubleshooting#
 <section>
 <h2>Conceptual underpinnings</h2>
 <p>When the Arduino Uno gets electricity, it starts running whatever code is at location 0 of its memory. This is typically an instruction called a "reset vector" that points to the start of a chunk of code called a "bootloader." The bootloader checks to see if a new program is available via the USB port. If it is, it receives the code, writes it into memory, and starts running it. If no code is available, it just runs whatever program it had been given the last time it was programmed. This is how every Arduino works: power up, look for new code; if none, run old code until power cycle.</p>
+
+<h2>So, how do I make this "code" you mention?</h2>
+<p>Start by making a new file in the Arduino program using <code class="code">File > New</code>. You'll see a new file containing the empty skeleton of an Arduino program:</p>
+<pre class="code">
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+</pre>
+<p>When an Arduino starts executing code (after figuring out whether new code needs to be loaded), it first executes everything inside the <code class="code">setup()</code> function once. Then, it executes the <code class="code">loop()</code> function over and over again forever. Inside each function (setup or loop), the code is executed from left to right and top to bottom, like reading a book.</p>
+
+<h2>Okay, but what can I actually write?</h2>
+<p>This is a hard question. One approach to answering it is to say, "Here are all the rules for what C++ code is valid," but that's not really a very good way to learn the possibilities, and it's also incredibly boring. (If that approach works for you, great! You should first read <a href="https://en.wikipedia.org/wiki/The_C_Programming_Language">"The C Programming Language" by Brian Kernighan and Dennis Ritchie</a>, and then move on to <a href="https://en.wikipedia.org/wiki/The_C%2B%2B_Programming_Language">Bjarne Stroustrup's "The C++ Programming Language."</a>)</p>
+<p>A better approach for those of you who are still here is to learn a few useful functions, and then look up other ones when you need them.</p>
+<h2>A few exciting functions</h2>
+<p>More details to be added . . .</p>
+<p>digitalWrite()</p>
+<p>digitalRead()</p>
+<p>analogRead()</p>
+<p>analogWrite()</p>
+<p>delay()</p>
+<p>If you want to check the details of these functions or see what else is available, the canonical reference is <a href="https://www.arduino.cc/en/Reference/HomePage">the Arduino reference page</a>.</p>
 </section>
 
 <section>
@@ -95,7 +122,7 @@ Problem uploading to board.  See http://www.arduino.cc/en/Guide/Troubleshooting#
 </pre>
 <p>You use the for &lt;somefunctions.h&gt; for files of functions that are pre-installed with the compiler. The "somefunctions.h" format is used for any little collections of functions you write and keep in the same directory as your main program. (Actually, these settings can be different on different compilers, and, to be honest, I'm not really even sure that this is the way the Arduino compiler is set up, but that's why there are two formats.)</p>
 
-<h3>The Comment at the Top</h3>
+<h3>Comments</h3>
 <p>Comments are text fragments injected for the sake of humans; the preprocessor strips them out as soon as you give it the file for compilation. For C, the rule is that comments are to be stuck between the symbols /* and */. Since C++ has been developed as an improved version of C, most preprocessors now allow "C++ style comments" which start with // and continue to the end of a line.</p>
 
 <h3>Functions</h3>
